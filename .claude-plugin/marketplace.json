@@ -1,0 +1,32 @@
+{
+  "name": "astrojones",
+  "owner": {
+    "name": "astrojones",
+    "url": "https://github.com/astrojones"
+  },
+  "metadata": {
+    "description": "The astrojones org plugin index. This repo is only the marketplace; each plugin lives in its own repo."
+  },
+  "plugins": [
+    {
+      "name": "astrojones-dev",
+      "source": {
+        "source": "github",
+        "repo": "astrojones/astrojones-dev"
+      },
+      "category": "developer-tools",
+      "keywords": ["nuklaut", "deployment", "onboarding", "astrojones"],
+      "description": "nuklaut deploy knowledge, /new-app scaffolding (born harnessed), and deploy-doctor CI diagnosis."
+    },
+    {
+      "name": "repo-agent-harness",
+      "source": {
+        "source": "github",
+        "repo": "astrojones/repo-agent-harness"
+      },
+      "category": "developer-tools",
+      "keywords": ["mcp", "agent", "harness", "serena", "code-navigation", "repo-health", "safety", "verification"],
+      "description": "Coding-workflow skills, subagents, safety hooks, and the /init scaffolder for the repo-agent-harness. The harness MCP server itself is installed per-repo (sha-pinned .mcp.json) by init — the plugin ships no server, so nothing is ever duplicated."
+    }
+  ]
+}
