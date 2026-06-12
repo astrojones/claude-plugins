@@ -15,18 +15,8 @@
         "repo": "astrojones/astrojones-dev"
       },
       "category": "developer-tools",
-      "keywords": ["nuklaut", "deployment", "onboarding", "astrojones"],
-      "description": "nuklaut deploy knowledge, /new-app scaffolding (born harnessed), and deploy-doctor CI diagnosis."
-    },
-    {
-      "name": "repo-agent-harness",
-      "source": {
-        "source": "github",
-        "repo": "astrojones/repo-agent-harness"
-      },
-      "category": "developer-tools",
-      "keywords": ["mcp", "agent", "harness", "serena", "code-navigation", "repo-health", "safety", "verification"],
-      "description": "Coding-workflow skills, subagents, safety hooks, and the /init scaffolder for the repo-agent-harness. The harness MCP server itself is installed per-repo (sha-pinned .mcp.json) by init — the plugin ships no server, so nothing is ever duplicated."
+      "keywords": ["nuklaut", "deployment", "onboarding", "astrojones", "harness", "mcp", "serena", "safety"],
+      "description": "The astrojones org plugin: nuklaut deploy knowledge, /new-app scaffolding (born harnessed), deploy-doctor CI diagnosis, plus the repo-agent-harness Claude Code surface (workflow skills, subagents, safety-hook shims, /harness-init). The harness MCP server itself is always per-repo (sha-pinned .mcp.json) — no plugin ships a server."
     }
   ]
 }
