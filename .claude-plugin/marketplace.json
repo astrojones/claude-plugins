@@ -9,14 +9,24 @@
   },
   "plugins": [
     {
-      "name": "astrojones-dev",
+      "name": "raisl",
       "source": {
         "source": "github",
-        "repo": "astrojones/astrojones-dev"
+        "repo": "astrojones/raisl"
       },
       "category": "developer-tools",
-      "keywords": ["nuklaut", "deployment", "onboarding", "astrojones", "harness", "mcp", "serena", "safety"],
-      "description": "The astrojones org plugin: nuklaut deploy knowledge, /new-app scaffolding (born harnessed), deploy-doctor CI diagnosis, plus the repo-agent-harness Claude Code surface (workflow skills, subagents, safety-hook shims, /harness-init). The harness MCP server itself is always per-repo (sha-pinned .mcp.json) — no plugin ships a server."
+      "keywords": ["harness", "mcp", "serena", "coding-agent", "safety", "code-navigation"],
+      "description": "The repo agent harness as a Claude Code plugin: a bundled, auto-connecting MCP server (repo_* tools + proxied serena_* code navigation), safety hooks, and generic coding-workflow skills and subagents. Harnesses any repo automatically on connect (AGENTS.md is opt-out). Generic — not tied to any one org."
+    },
+    {
+      "name": "deploy",
+      "source": {
+        "source": "github",
+        "repo": "astrojones/deploy"
+      },
+      "category": "developer-tools",
+      "keywords": ["nuklaut", "deployment", "astrojones", "scaffolding"],
+      "description": "The astrojones org deploy layer: nuklaut deploy knowledge, /new-app + /harness-app scaffolding, deploy-doctor CI diagnosis, the scaffold templates, and pyproject-canon. Private (org members). Requires the raisl plugin — /new-app and /harness-app call raisl's repo_bootstrap MCP tool for harness setup."
     }
   ]
 }
