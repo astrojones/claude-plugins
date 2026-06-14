@@ -8,31 +8,33 @@ double as a marketplace.
 
 ```bash
 claude plugin marketplace add astrojones/claude-plugins
-claude plugin install astrojones-dev@astrojones        # the one org plugin
+claude plugin install raisl@astrojones    # repo agent harness + coding workflows
+claude plugin install deploy@astrojones   # astrojones org deploy layer (requires raisl)
 ```
 
 ## What's listed
 
 | Plugin | Repo | What it is |
 |--------|------|------------|
-| `astrojones-dev` | [astrojones/astrojones-dev](https://github.com/astrojones/astrojones-dev) | The org plugin: nuklaut deploy knowledge, `/new-app` scaffolding, deploy-doctor CI diagnosis, plus the repo-agent-harness Claude Code surface (workflow skills, subagents, safety-hook shims, `/harness-init`). |
+| `raisl` | [astrojones/raisl](https://github.com/astrojones/raisl) | The repo agent harness as a Claude Code plugin: a bundled, auto-connecting MCP server (`repo_*` tools + proxied `serena_*` code navigation), safety hooks, and generic coding-workflow skills and subagents. Harnesses any repo automatically on connect (`AGENTS.md` is opt-out). Generic — not tied to any one org. |
+| `deploy` | [astrojones/deploy](https://github.com/astrojones/deploy) | The astrojones org deploy layer: nuklaut deploy knowledge, `/new-app` + `/harness-app` scaffolding, deploy-doctor CI diagnosis, the scaffold templates, and pyproject-canon. Org-internal/private. Requires the `raisl` plugin. |
 
-[`repo-agent-harness`](https://github.com/astrojones/repo-agent-harness) itself is **not a
-plugin** — it's the per-repo MCP server + scaffolder, installed into each repo as a
-sha-pinned `.mcp.json` entry.
+## How duplication is avoided
 
-## The two-layer rule (why nothing is duplicated)
+`raisl` ships its harness MCP server bundled in the plugin, and it
+auto-connects in Claude Code — no per-repo `.mcp.json` setup needed there.
 
-- **Per repo:** `/new-app` (or `repo-agent-harness init`) scaffolds each app with its own
-  sha-pinned harness **MCP server** in `.mcp.json` — works with any MCP-capable assistant,
-  no plugins needed.
-- **Per user:** the plugin above adds Claude Code **workflows** (skills, agents, hooks,
-  commands). It ships **no MCP server**.
+For CI or other non-Claude-Code clients, `raisl`'s `repo_bootstrap(pin="<sha>")`
+materializes a project-pinned `.mcp.json` entry instead, so the same server can
+run outside Claude Code without drifting from the plugin version.
 
-So installing the plugin *and* working in scaffolded repos never runs duplicate servers:
-the server always comes from the repo, the workflows from the plugin.
+`deploy` is the org layer on top and ships **no server of its own** — `/new-app`
+and `/harness-app` call `raisl`'s `repo_bootstrap` MCP tool for harness setup.
+So installing both plugins never runs duplicate servers: there's exactly one
+harness server, either bundled-and-auto-connected (Claude Code) or
+sha-pinned-in-`.mcp.json` (everywhere else).
 
 ## Maintenance
 
-Plugin releases happen in the plugin repos (bump their `plugin.json`). Touch this repo
-only to add/remove a plugin or change its index metadata.
+Plugin releases happen in the individual plugin repos (bump their `plugin.json`).
+Touch this repo only to add/remove a plugin or change its index metadata.
