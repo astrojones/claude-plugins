@@ -9,10 +9,10 @@
   },
   "plugins": [
     {
-      "name": "raisl",
+      "name": "astrojones",
       "source": {
         "source": "github",
-        "repo": "astrojones/raisl"
+        "repo": "astrojones/astrojones"
       },
       "category": "developer-tools",
       "keywords": ["harness", "mcp", "serena", "coding-agent", "safety", "code-navigation"],
@@ -26,7 +26,7 @@
       },
       "category": "developer-tools",
       "keywords": ["nuklaut", "deployment", "astrojones", "scaffolding"],
-      "description": "The astrojones org deploy layer: nuklaut deploy knowledge, /new-app + /harness-app scaffolding, deploy-doctor CI diagnosis, the scaffold templates, and pyproject-canon. Private (org members). Requires the raisl plugin — /new-app and /harness-app call raisl's repo_bootstrap MCP tool for harness setup."
+      "description": "The astrojones org deploy layer: nuklaut deploy knowledge, /new-app + /harness-app scaffolding, deploy-doctor CI diagnosis, the scaffold templates, and pyproject-canon. Private (org members). Requires the astrojones plugin — /new-app and /harness-app call astrojones's repo_bootstrap MCP tool for harness setup."
     }
   ]
 }
